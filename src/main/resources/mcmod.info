@@ -1,0 +1,16 @@
+[
+{
+  "modid": "blazecraft1.12.2",
+  "name": "Bazecraft",
+  "description": "Very cool blaze mod for u",
+  "version": "0.1",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["WhiteSIlence"],
+  "credits": "The Forge and FML guys, for making this example",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
