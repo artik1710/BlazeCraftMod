@@ -1,4 +1,4 @@
-package blazecraft.mod;
+package blazecraft.mod.util.handlers;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -12,7 +12,7 @@ public class CommonProxy {
 
 	@SubscribeEvent
 	public static void registerRenders(ModelRegistryEvent event) {
-	registerRender(ExampleMod.BlazeSword);
+	registerRender(MainRegistry.BlazeSword);
 	}
 	
 	private static void registerRender(Item item) 
@@ -21,9 +21,15 @@ public class CommonProxy {
 	}
 	
 	@SubscribeEvent
-	public static void registerItems(RegistryEvent.Register<Item> event) {
-	event.getRegistry().registerAll(ExampleMod.BlazeSword);	
+	public static void registerItems(RegistryEvent.Register<Item> event) 
+	{
+	event.getRegistry().registerAll(MainRegistry.BlazeSword);	
 	}
-	}
+	
+public static void preInitRegistries() {
+
+}
+}
+
 
 
