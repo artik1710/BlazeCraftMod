@@ -1,13 +1,8 @@
 package blazecraft.mod.Entity.projectiles;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.passive.EntityPig;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.PotionTypes;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
@@ -15,26 +10,27 @@ import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.asm.transformers.PotionEffectTransformer;
-import net.minecraft.potion.PotionType;
 public class SmallCumBall  extends BaseBlazeBall{
 
 	public SmallCumBall(World worldIn) {
 		super(worldIn);
-
+		this.setSize(0.3F, 0.3F);
+	
 	}
 	public SmallCumBall(World worldIn, EntityLivingBase shooter, double accelX, double accelY, double accelZ) {
 		super(worldIn, shooter, accelX, accelY, accelZ);
-
+		this.setSize(0.3F, 0.3F);
 	}
 	public SmallCumBall(World worldIn,double x, double y, double z, double accelX, double accelY, double accelZ) {
 		super(worldIn, x, y, z, accelX, accelY, accelZ);
+		super.setSize(0.3F, 0.3F);
 	}
 	 public static void registerFixesSmallFireball(DataFixer fixer)
 	    {
 	        BaseBlazeBall.registerFixesFireball(fixer, "cumball");
 	        
 	    }
+
 	 protected void onImpact(RayTraceResult result)
 	    {
 	        if (!this.world.isRemote)
@@ -47,9 +43,9 @@ public class SmallCumBall  extends BaseBlazeBall{
 	                    if (flag)
 	                    {
 	                        this.applyEnchantments(this.shootingEntity, result.entityHit);
-	                        result.entityHit.addVelocity(0.0D, 1D, 0.0D);
+	                        result.entityHit.addVelocity(0.0D, 0.3D, 0.0D);
 	                        //result.entityHit.isEntityEqual(Minecraft.getMinecraft().player)
-	                        ((EntityLivingBase)result.entityHit).addPotionEffect(new PotionEffect(Potion.getPotionById(3), 700, 1));
+	                        ((EntityLivingBase)result.entityHit).addPotionEffect(new PotionEffect(Potion.getPotionById(2), 700, 1));
 	                    }
 	  
 	            }

@@ -1,27 +1,53 @@
 {
     "pools": [
-        {
-        "name": "gayblazemain",
+        {   "name": "raredrop",
             "rolls": 1,
             "conditions": [
                 {
-                    "condition": "killed_by_player"
-                },
-                {
                     "condition": "random_chance",
-                    "chance": 0.1
+                    "chance": 0.04
                 }
             ],
             "entries": [
                 {
                     "type": "item",
                     "weight": 2,
-                    "name": "blazecraft:blaze_sword"
+                    "name": "blazecraft:blaze_sword",
+                    "functions": [
+                        {
+                            "function": "enchant_randomly",
+                            "enchantments": [
+                                "looting",
+                                "fortune"
+                            ],
+                            "conditions": [
+                                {
+                                    "condition": "random_chance",
+                                    "chance": 0.6
+                                }
+                            ]
+                        },
+                        {
+                            "function": "set_damage",
+                            "damage": {
+                                "min": 0.6,
+                                "max": 0.9
+                            }
+                        },
+                        {
+                            "function": "set_attributes",
+                            "modifiers": [
+                                {
+
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
         {
-        	"name": "gayblazeadd",
+        	"name": "mainDrop",
             "rolls": {
                 "min": 1,
                 "max": 3
@@ -34,7 +60,7 @@
                 {
                     "type": "item",
                     "weight": 1,
-                    "name": "minecraft:snowball"
+                    "name": "blazecraft:itemcumball"
                 }
             ]
         }

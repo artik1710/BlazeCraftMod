@@ -13,6 +13,7 @@ public class CommonProxy {
 	@SubscribeEvent
 	public static void registerRenders(ModelRegistryEvent event) {
 	registerRender(MainRegistry.BlazeSword);
+	registerRender(MainRegistry.ItemCumball);
 	}
 	
 	private static void registerRender(Item item) 
@@ -23,7 +24,8 @@ public class CommonProxy {
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event) 
 	{
-	event.getRegistry().registerAll(MainRegistry.BlazeSword);	
+	event.getRegistry().registerAll(MainRegistry.BlazeSword);
+	event.getRegistry().registerAll(MainRegistry.ItemCumball);
 	}
 	
 public static void preInitRegistries() {

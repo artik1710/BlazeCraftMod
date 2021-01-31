@@ -66,9 +66,9 @@ public abstract class BaseBlazeBall extends Entity {
         this.motionX = 0.0D;
         this.motionY = 0.0D;
         this.motionZ = 0.0D;
-        accelX = accelX + this.rand.nextGaussian() * 0.4D;
-        accelY = accelY + this.rand.nextGaussian() * 0.4D;
-        accelZ = accelZ + this.rand.nextGaussian() * 0.4D;
+        accelX = accelX + this.rand.nextGaussian() * 0.01D;
+        accelY = accelY + this.rand.nextGaussian() * 0.01D;
+        accelZ = accelZ + this.rand.nextGaussian() * 0.01D;
         double d0 = (double)MathHelper.sqrt(accelX * accelX + accelY * accelY + accelZ * accelZ);
         this.accelerationX = accelX / d0 * 0.1D;
         this.accelerationY = accelY / d0 * 0.1D;

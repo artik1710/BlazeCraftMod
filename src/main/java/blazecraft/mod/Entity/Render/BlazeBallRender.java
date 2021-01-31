@@ -2,6 +2,7 @@ package blazecraft.mod.Entity.Render;
 
 import net.minecraftforge.fml.relauncher.SideOnly;
 import blazecraft.mod.Entity.projectiles.BaseBlazeBall;
+import blazecraft.mod.item.ItemCumball;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -12,6 +13,7 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 
@@ -33,7 +35,7 @@ import net.minecraftforge.fml.relauncher.Side;
 	        GlStateManager.translate((float)x, (float)y, (float)z);
 	        GlStateManager.enableRescaleNormal();
 	        GlStateManager.scale(this.scale, this.scale, this.scale);
-	        TextureAtlasSprite textureatlassprite = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getParticleIcon(Items.SNOWBALL);
+	        TextureAtlasSprite textureatlassprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite("blazecraft:items/cumball");
 	        Tessellator tessellator = Tessellator.getInstance();
 	        BufferBuilder bufferbuilder = tessellator.getBuffer();
 	        float f = textureatlassprite.getMinU();
