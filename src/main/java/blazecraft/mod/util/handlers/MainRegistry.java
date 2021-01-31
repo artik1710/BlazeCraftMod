@@ -1,7 +1,7 @@
 package blazecraft.mod.util.handlers;
 import net.minecraftforge.fml.common.Mod.Instance;
 import blazecraft.mod.CustomSword;
-import blazecraft.mod.Entity.GayBlaze;
+import blazecraft.mod.Entity.CumBlaze;
 import blazecraft.mod.init.EntityInit;
 import blazecraft.mod.item.ItemCumball;
 import net.minecraft.item.Item;

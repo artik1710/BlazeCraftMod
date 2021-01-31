@@ -1,6 +1,6 @@
 package blazecraft.mod.init;
 
-import blazecraft.mod.Entity.GayBlaze;
+import blazecraft.mod.Entity.CumBlaze;
 import blazecraft.mod.Entity.projectiles.SmallCumBall;
 import blazecraft.mod.util.handlers.MainRegistry;
 import net.minecraft.entity.Entity;
@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class EntityInit {
 	public static void registerEntities() {
-	registerEntity("gayblaze",GayBlaze.class ,1488,50,15657710,00000000);
+	registerEntity("cumblaze",CumBlaze.class ,1488,50,15657710,00000000);
 	registerItemEntity("cumball",SmallCumBall.class,1489,50);
 	}
 	

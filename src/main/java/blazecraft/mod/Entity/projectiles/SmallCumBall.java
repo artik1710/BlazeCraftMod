@@ -14,16 +14,16 @@ public class SmallCumBall  extends BaseBlazeBall{
 
 	public SmallCumBall(World worldIn) {
 		super(worldIn);
-		this.setSize(0.3F, 0.3F);
+		this.setSize(0.1F, 0.1F);
 	
 	}
 	public SmallCumBall(World worldIn, EntityLivingBase shooter, double accelX, double accelY, double accelZ) {
 		super(worldIn, shooter, accelX, accelY, accelZ);
-		this.setSize(0.3F, 0.3F);
+		this.setSize(0.1F, 0.1F);
 	}
 	public SmallCumBall(World worldIn,double x, double y, double z, double accelX, double accelY, double accelZ) {
 		super(worldIn, x, y, z, accelX, accelY, accelZ);
-		super.setSize(0.3F, 0.3F);
+		super.setSize(0.1F, 0.1F);
 	}
 	 public static void registerFixesSmallFireball(DataFixer fixer)
 	    {

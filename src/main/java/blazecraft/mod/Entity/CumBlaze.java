@@ -18,9 +18,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-public class GayBlaze extends EntityBlaze {
+public class CumBlaze extends EntityBlaze {
 
-	public GayBlaze(World worldIn) {
+	public CumBlaze(World worldIn) {
 		super(worldIn);
 	}
 	
@@ -30,7 +30,7 @@ this.tasks.addTask(4, new EntityAIWanderAvoidWater(this, 1.0D));
 this.tasks.addTask(5, new EntityAIEatGrass(this));
 this.tasks.addTask(6, new EntityAILookIdle(this));
 //this.tasks.addTask(1, new EntityAIAttackMelee(this, 2.0D, false));
-this.tasks.addTask(1, new GayBlaze.CumballAttack(this));
+this.tasks.addTask(1, new CumBlaze.CumballAttack(this));
 this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityCreature.class, true));
 
 	}
@@ -38,18 +38,18 @@ this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityCrea
 	
 @Override
 protected ResourceLocation getLootTable() {
-	return LootTableHandler.GAYBLAZE;
+	return LootTableHandler.CUMBLAZE;
 }
 
 
 	
 static class CumballAttack extends EntityAIBase
 {
-    private final GayBlaze blaze;
+    private final CumBlaze blaze;
     private int attackStep;
     private int attackTime;
     
-    public CumballAttack(GayBlaze blazeIn)
+    public CumballAttack(CumBlaze blazeIn)
     {
         this.blaze = blazeIn;
         this.setMutexBits(3);

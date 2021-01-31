@@ -28,7 +28,7 @@ public abstract class BaseBlazeBall extends Entity {
 	
 	public BaseBlazeBall(World worldIn) {
 		super(worldIn);
-		this.setSize(1.0F, 1.0F);
+		this.setSize(0.5F, 0.5F);
 		
 	}	
 	  protected void entityInit()
