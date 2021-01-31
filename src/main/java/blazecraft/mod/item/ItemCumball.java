@@ -1,6 +1,7 @@
 package blazecraft.mod.item;
 
 import blazecraft.mod.Entity.projectiles.SmallCumBall;
+import blazecraft.mod.util.handlers.MainRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -19,7 +20,7 @@ public class ItemCumball extends Item{
 	public ItemCumball()
 	{
 	this.maxStackSize=16;
-	this.setCreativeTab(CreativeTabs.COMBAT);
+	this.setCreativeTab(MainRegistry.blazetab);
 	this.setRegistryName("itemcumball");
 	this.setUnlocalizedName("itemcumball");
 	}

@@ -4,6 +4,8 @@ import blazecraft.mod.CustomSword;
 import blazecraft.mod.Entity.CumBlaze;
 import blazecraft.mod.init.EntityInit;
 import blazecraft.mod.item.ItemCumball;
+import blazecraft.mod.tabs.BlazeTab;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraft.item.Item.ToolMaterial;
@@ -18,10 +20,11 @@ public class MainRegistry
 {
 	@Instance 
 	public static MainRegistry instance;
-	   
+	 
     public static final String MODID = "blazecraft";
     public static final String NAME = "Blazecraft";
     public static final String VERSION = "0.1";
+    public static final CreativeTabs blazetab = new BlazeTab("blazetab");
     public static ToolMaterial BlazeSwordMat;
     public static Item BlazeSword;
     public static Item ItemCumball;
