@@ -28,7 +28,7 @@ import net.minecraftforge.fml.relauncher.Side;
 	        this.scale = scaleIn;
 	    }
 
-	    public void doRender(BaseBlazeBall entity, double x, double y, double z, float entityYaw, float partialTicks) //РІРѕС‚ РµС‚Рѕ СЂСЏР» РїРёР·РґРµС†
+	    public void doRender(BaseBlazeBall entity, double x, double y, double z, float entityYaw, float partialTicks) //Сложно рендерим камбол)
 	    {
 	        GlStateManager.pushMatrix();
 	        this.bindEntityTexture(entity);

@@ -5,7 +5,7 @@ import net.minecraft.world.World;
 public class ToxicBlaze extends CumBlaze{
 
 	public ToxicBlaze(World worldIn) {
-		super(worldIn); //РІРѕР·РјРѕР¶РЅРѕ, С‚СѓС‚ Р±СѓРґРµС‚ С‚РѕРєСЃРёРє С€Р°СЂ
+		super(worldIn); //когда-то тут будет токсик блейз
 	}
 	
 

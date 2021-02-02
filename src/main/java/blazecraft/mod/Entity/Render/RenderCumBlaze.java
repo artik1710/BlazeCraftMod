@@ -9,7 +9,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderCumBlaze extends RenderLiving<CumBlaze>
 {
-	public static final ResourceLocation TEXTURES = new ResourceLocation(MainRegistry.MODID + ":textures/entity/cumBlaze.png"); //Ρ‚ΡƒΡ‚ ΡƒΠ¶Πµ Π½Πµ Ρ‚Π°ΠΊ ΡΡ‚Ρ€Π°ΡΠ½ΠΎ
+	public static final ResourceLocation TEXTURES = new ResourceLocation(MainRegistry.MODID + ":textures/entity/cumBlaze.png"); //πενδεπθμ κΰμαξλ)
 	
 	public RenderCumBlaze(RenderManager manager) {
 		super(manager, new ModelGayBlaze(), 0.5f);

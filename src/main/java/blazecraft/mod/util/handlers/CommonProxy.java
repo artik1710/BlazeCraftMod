@@ -19,7 +19,7 @@ public class CommonProxy {
 	registerRender(MainRegistry.BlazeSword);
 	registerRender(MainRegistry.ItemCumball);
 	for(Block block : BlockInit.BLOCKS) {
-	registerRender(Item.getItemFromBlock(block)); //С‚СѓС‚ СЂРµРіР°СЋ РІСЃРµ СЂРµРЅРґРµСЂС‹ Р±Р»РѕРєРѕРІ, РєРѕС‚РѕСЂС‹Рµ С…СЂР°РЅСЏС‚СЃСЏ РІ BlockInit Рё РґРѕР±Р°РІР»СЏСЋС‚СЃСЏ РѕРЅРё С‚СѓРґР° РёР· BaseBlock
+	registerRender(Item.getItemFromBlock(block)); //тут регаю все рендеры блоков, которые хранятся в BlockInit и добавляются они туда из BaseBlock
 	}
 	}
 	
@@ -34,13 +34,13 @@ public class CommonProxy {
 	{
 	event.getRegistry().register(MainRegistry.BlazeSword);
 	event.getRegistry().register(MainRegistry.ItemCumball);
-	event.getRegistry().registerAll(ItemInit.ITEMS.toArray(new Item[0])); //СЂРµРіРёСЃС‚СЂ РёС‚РµРјРѕРІ
+	event.getRegistry().registerAll(ItemInit.ITEMS.toArray(new Item[0])); //регистр итемов
 	//
 	}
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event) 
 	{
-		event.getRegistry().registerAll(BlockInit.BLOCKS.toArray(new Block[0])); //СЂРµРіРёСЃС‚СЂ Р±Р»РѕРєРѕРІ
+		event.getRegistry().registerAll(BlockInit.BLOCKS.toArray(new Block[0])); //регистр блоков
 		
 	}
 public static void preInitRegistries() {

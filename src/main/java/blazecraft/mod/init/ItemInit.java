@@ -1,11 +1,1 @@
-package blazecraft.mod.init;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import net.minecraft.item.Item;
-
-public class ItemInit {
-	public static final List<Item> ITEMS = new ArrayList<Item>();
-//С‚РѕР¶Рµ СЃР°РјРѕРµ, С‡С‚Рѕ Рё РІ Р±Р»РѕРєРРЅРёС‚Рµ
-}
+package blazecraft.mod.init;import java.util.ArrayList;import java.util.List;import net.minecraft.item.Item;public class ItemInit {	public static final List<Item> ITEMS = new ArrayList<Item>();}//также как и в блокините
