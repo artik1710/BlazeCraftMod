@@ -11,16 +11,33 @@ import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAIWanderAvoidWater;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
-import net.minecraft.entity.monster.EntityBlaze;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class CumBlaze extends EntityBlaze {
 
-	public CumBlaze(World worldIn) {
+
+public class CumBlaze extends EntityMob{
+	
+	private float heightOffset = 0.5F;
+    private int heightOffsetUpdateTime;
+	private static final DataParameter<Byte> ON_FIRE = EntityDataManager.<Byte>createKey(CumBlaze.class, DataSerializers.BYTE);
+
+	
+	public CumBlaze(World worldIn) 
+	{
 		super(worldIn);
 	}
 	
@@ -32,15 +49,113 @@ this.tasks.addTask(6, new EntityAILookIdle(this));
 //this.tasks.addTask(1, new EntityAIAttackMelee(this, 2.0D, false)); 
 this.tasks.addTask(1, new CumBlaze.CumballAttack(this));
 this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityCreature.class, true));   //Украл код из базового блейза
-
+this.isImmuneToFire = false;
 	}
 	
-	
+protected void applyEntityAttributes()
+{
+    super.applyEntityAttributes();
+    this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(6.0D);
+    this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.23000000417232513D);
+    this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(48.0D);
+}
+
+protected void entityInit()
+{
+    super.entityInit();
+    this.dataManager.register(ON_FIRE, Byte.valueOf((byte)0));
+}
+protected SoundEvent getAmbientSound()
+{
+    return SoundEvents.ENTITY_BLAZE_AMBIENT;
+}
+
+protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+{
+    return SoundEvents.ENTITY_BLAZE_HURT;
+}
+
+protected SoundEvent getDeathSound()
+{
+    return SoundEvents.ENTITY_BLAZE_DEATH;
+}
+
+@SideOnly(Side.CLIENT)
+public int getBrightnessForRender()
+{
+    return 15728880;
+}
+
+public float getBrightness()
+{
+    return 1.0F;
+}
+protected boolean isValidLightLevel()
+{
+    return true;
+}
 @Override
 protected ResourceLocation getLootTable() {
 	return LootTableHandler.CUMBLAZE;
 }
 
+public void onLivingUpdate()
+{
+    if (!this.onGround && this.motionY < 0.0D)
+    {
+        this.motionY *= 0.6D;
+    }
+
+    if (this.world.isRemote)
+    {
+        if (this.rand.nextInt(24) == 0 && !this.isSilent())
+        {
+            this.world.playSound(this.posX + 0.5D, this.posY + 0.5D, this.posZ + 0.5D, SoundEvents.ENTITY_BLAZE_BURN, this.getSoundCategory(), 1.0F + this.rand.nextFloat(), this.rand.nextFloat() * 0.7F + 0.3F, false);
+        }
+
+        for (int i = 0; i < 2; ++i)
+        {
+            this.world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
+        }
+    }
+
+    super.onLivingUpdate();
+}
+
+protected void updateAITasks()
+{
+    if (this.isWet())
+    {
+        this.attackEntityFrom(DamageSource.DROWN, 1.0F);
+    }
+
+    --this.heightOffsetUpdateTime;
+
+    if (this.heightOffsetUpdateTime <= 0)
+    {
+        this.heightOffsetUpdateTime = 100;
+        this.heightOffset = 0.5F + (float)this.rand.nextGaussian() * 3.0F;
+    }
+
+    EntityLivingBase entitylivingbase = this.getAttackTarget();
+
+    if (entitylivingbase != null && entitylivingbase.posY + (double)entitylivingbase.getEyeHeight() > this.posY + (double)this.getEyeHeight() + (double)this.heightOffset)
+    {
+        this.motionY += (0.30000001192092896D - this.motionY) * 0.30000001192092896D;
+        this.isAirBorne = true;
+    }
+
+    super.updateAITasks();
+}
+
+public void fall(float distance, float damageMultiplier)
+{
+}
+
+public boolean isBurning()
+{
+    return false;
+}
 
 	
 static class CumballAttack extends EntityAIBase
@@ -68,7 +183,6 @@ static class CumballAttack extends EntityAIBase
 
     public void resetTask()
     {
-        this.blaze.setOnFire(false);
     }
 
     public void updateTask()
@@ -100,7 +214,6 @@ static class CumballAttack extends EntityAIBase
                 if (this.attackStep == 1)
                 {
                     this.attackTime = 60;
-                    this.blaze.setOnFire(true);
                 }
                 else if (this.attackStep <= 4)
                 {
@@ -110,12 +223,12 @@ static class CumballAttack extends EntityAIBase
                 {
                     this.attackTime = 100;
                     this.attackStep = 0;
-                    this.blaze.setOnFire(false);
+                 
                 }
 
                 if (this.attackStep > 1)
                 {
-                    float f = MathHelper.sqrt(MathHelper.sqrt(d0)) * 0.5F;
+                    float f = MathHelper.sqrt(MathHelper.sqrt(d0)) * 0.15F;
                     this.blaze.world.playEvent((EntityPlayer)null, 1018, new BlockPos((int)this.blaze.posX, (int)this.blaze.posY, (int)this.blaze.posZ), 0);
 
                     for (int i = 0; i < 1; ++i)
@@ -145,10 +258,13 @@ static class CumballAttack extends EntityAIBase
     }
 }
 
-	
 
 	
-	
-
 }
+	
+
+	
+	
+
+
 
