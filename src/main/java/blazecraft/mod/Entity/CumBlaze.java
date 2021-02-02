@@ -2,6 +2,7 @@ package blazecraft.mod.Entity;
 
 import blazecraft.mod.Entity.projectiles.SmallCumBall;
 import blazecraft.mod.util.handlers.LootTableHandler;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -34,7 +35,6 @@ public class CumBlaze extends EntityMob{
 	private float heightOffset = 0.5F;
     private int heightOffsetUpdateTime;
 	private static final DataParameter<Byte> ON_FIRE = EntityDataManager.<Byte>createKey(CumBlaze.class, DataSerializers.BYTE);
-
 	
 	public CumBlaze(World worldIn) 
 	{
@@ -157,8 +157,12 @@ public boolean isBurning()
     return false;
 }
 
-	
-static class CumballAttack extends EntityAIBase
+public Entity SetProjectile(World world, CumBlaze blaze2, double d, double d2, double e) {
+SmallCumBall entitysmallfireball = new SmallCumBall(world,blaze2,d,d2,e);
+return entitysmallfireball;
+}
+
+private class CumballAttack extends EntityAIBase
 {
     private final CumBlaze blaze;
     private int attackStep;
@@ -232,8 +236,8 @@ static class CumballAttack extends EntityAIBase
                     this.blaze.world.playEvent((EntityPlayer)null, 1018, new BlockPos((int)this.blaze.posX, (int)this.blaze.posY, (int)this.blaze.posZ), 0);
 
                     for (int i = 0; i < 1; ++i)
-                    {
-                    	SmallCumBall entitysmallfireball = new SmallCumBall(this.blaze.world, this.blaze, d1 + this.blaze.getRNG().nextGaussian() * (double)f, d2, d3 + this.blaze.getRNG().nextGaussian() * (double)f);
+                    {   
+                    	Entity entitysmallfireball = SetProjectile(this.blaze.world, this.blaze, d1 + this.blaze.getRNG().nextGaussian() * (double)f, d2, d3 + this.blaze.getRNG().nextGaussian() * (double)f);
                         entitysmallfireball.posY = this.blaze.posY + (double)(this.blaze.height / 2.0F) + 0.5D;
                         this.blaze.world.spawnEntity(entitysmallfireball);
                     }
@@ -251,12 +255,15 @@ static class CumballAttack extends EntityAIBase
         super.updateTask();
     }
 
-    private double getFollowDistance()
+ 
+	private double getFollowDistance()
     {
         IAttributeInstance iattributeinstance = this.blaze.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE);
         return iattributeinstance == null ? 16.0D : iattributeinstance.getAttributeValue();
     }
 }
+
+
 
 
 	

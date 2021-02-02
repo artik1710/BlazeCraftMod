@@ -1,7 +1,9 @@
 package blazecraft.mod.util.handlers;
 
 import blazecraft.mod.Entity.CumBlaze;
+import blazecraft.mod.Entity.ToxicBlaze;
 import blazecraft.mod.Entity.Render.RenderCumBlaze;
+import blazecraft.mod.Entity.Render.RenderToxicBlaze;
 import blazecraft.mod.Entity.projectiles.BaseBlazeBall;
 import blazecraft.mod.Entity.Render.BlazeBallRender;
 import net.minecraft.client.renderer.entity.Render;
@@ -17,6 +19,13 @@ public class RenderHandler {
 			@Override
 			public Render<? super CumBlaze> createRenderFor(RenderManager manager) {
 				return new RenderCumBlaze(manager);
+			}
+		});
+RenderingRegistry.registerEntityRenderingHandler(ToxicBlaze.class, new IRenderFactory<ToxicBlaze>() {
+			
+			@Override
+			public Render<? super ToxicBlaze> createRenderFor(RenderManager manager) {
+				return new RenderToxicBlaze(manager);
 			}
 		});
 	}
