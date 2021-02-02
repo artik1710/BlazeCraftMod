@@ -7,7 +7,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
-public class EntityInit {
+public class EntityInit {		//тут лучше вообще ничего не трогать, я хз как оно работает, но пусть работает
 	public static void registerEntities() {
 	registerEntity("cumblaze",CumBlaze.class ,1488,50,15657710,00000000);
 	registerItemEntity("cumball",SmallCumBall.class,1489,50);

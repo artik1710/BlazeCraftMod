@@ -29,9 +29,9 @@ protected void initEntityAI() {
 this.tasks.addTask(4, new EntityAIWanderAvoidWater(this, 1.0D));
 this.tasks.addTask(5, new EntityAIEatGrass(this));
 this.tasks.addTask(6, new EntityAILookIdle(this));
-//this.tasks.addTask(1, new EntityAIAttackMelee(this, 2.0D, false));
+//this.tasks.addTask(1, new EntityAIAttackMelee(this, 2.0D, false)); 
 this.tasks.addTask(1, new CumBlaze.CumballAttack(this));
-this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityCreature.class, true));
+this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityCreature.class, true));   //большую часть кода я скопировал из оригинального блейза)
 
 	}
 	

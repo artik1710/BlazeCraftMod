@@ -28,7 +28,7 @@ import net.minecraftforge.fml.relauncher.Side;
 	        this.scale = scaleIn;
 	    }
 
-	    public void doRender(BaseBlazeBall entity, double x, double y, double z, float entityYaw, float partialTicks)
+	    public void doRender(BaseBlazeBall entity, double x, double y, double z, float entityYaw, float partialTicks) //вот ето рял пиздец
 	    {
 	        GlStateManager.pushMatrix();
 	        this.bindEntityTexture(entity);
