@@ -23,6 +23,8 @@ public class MainRegistry
     public static final String MODID = "blazecraft";
     public static final String NAME = "Blazecraft";
     public static final String VERSION = "0.1";
+    public static final int GUI_BLAZE_FURNANCE = 0;
+    
     public static final CreativeTabs blazetab = new BlazeTab("blazetab");
     public static ToolMaterial BlazeSwordMat;
     public static Item BlazeSword;	//пример того как НЕ надо делать
