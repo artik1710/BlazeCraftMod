@@ -32,7 +32,7 @@ public class MainRegistry
     public void preInit(FMLPreInitializationEvent event)
     {
         // это быдлокод
-    	BlazeSwordMat = EnumHelper.addToolMaterial("MATERIAL NAME", 4, 500, 3F, 10.0F, 30);
+    	BlazeSwordMat = EnumHelper.addToolMaterial("MATERIAL NAME", 1, 500, 3F, 10.0F, 30);
     	BlazeSword = new CustomSword(BlazeSwordMat);
         ItemCumball = new ItemCumball();
         

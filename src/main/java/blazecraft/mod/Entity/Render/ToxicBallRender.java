@@ -1,7 +1,7 @@
 package blazecraft.mod.Entity.Render;
 
 import net.minecraftforge.fml.relauncher.SideOnly;
-import blazecraft.mod.Entity.projectiles.BaseBlazeBall;
+import blazecraft.mod.Entity.projectiles.ToxicBall;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -15,24 +15,24 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 
 @SideOnly(Side.CLIENT)
-	public class BlazeBallRender extends Render<BaseBlazeBall>
+	public class ToxicBallRender extends Render<ToxicBall>
 	{
 	    private final float scale;
 
-	    public BlazeBallRender(RenderManager renderManagerIn, float scaleIn)
+	    public ToxicBallRender(RenderManager renderManagerIn, float scaleIn)
 	    {
 	        super(renderManagerIn);
 	        this.scale = scaleIn;
 	    }
 
-	    public void doRender(BaseBlazeBall entity, double x, double y, double z, float entityYaw, float partialTicks) //Сложно рендерим камбол)
+	    public void doRender(ToxicBall entity, double x, double y, double z, float entityYaw, float partialTicks) //Сложно рендерим камбол)
 	    {
 	        GlStateManager.pushMatrix();
 	        this.bindEntityTexture(entity);
 	        GlStateManager.translate((float)x, (float)y, (float)z);
 	        GlStateManager.enableRescaleNormal();
 	        GlStateManager.scale(this.scale, this.scale, this.scale);
-	        TextureAtlasSprite textureatlassprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite("blazecraft:items/cumball");
+	        TextureAtlasSprite textureatlassprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite("blazecraft:items/toxicball");
 	        Tessellator tessellator = Tessellator.getInstance();
 	        BufferBuilder bufferbuilder = tessellator.getBuffer();
 	        float f = textureatlassprite.getMinU();
@@ -66,7 +66,7 @@ import net.minecraftforge.fml.relauncher.Side;
 	        super.doRender(entity, x, y, z, entityYaw, partialTicks);
 	    }
 
-	    protected ResourceLocation getEntityTexture(BaseBlazeBall entity)
+	    protected ResourceLocation getEntityTexture(ToxicBall entity)
 	    {
 	        return TextureMap.LOCATION_BLOCKS_TEXTURE;
 	    }

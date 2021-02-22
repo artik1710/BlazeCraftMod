@@ -21,6 +21,10 @@ public class CommonProxy {
 	for(Block block : BlockInit.BLOCKS) {
 	registerRender(Item.getItemFromBlock(block)); //тут регаю все рендеры блоков, которые хранятся в BlockInit и добавляются они туда из BaseBlock
 	}
+	for(Item item : ItemInit.ITEMS) {
+		registerRender(item); //тут регаю все рендеры блоков, которые хранятся в BlockInit и добавляются они туда из BaseBlock
+		}
+
 	}
 	
 	

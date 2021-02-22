@@ -4,7 +4,9 @@ import blazecraft.mod.Entity.CumBlaze;
 import blazecraft.mod.Entity.ToxicBlaze;
 import blazecraft.mod.Entity.Render.RenderCumBlaze;
 import blazecraft.mod.Entity.Render.RenderToxicBlaze;
+import blazecraft.mod.Entity.Render.ToxicBallRender;
 import blazecraft.mod.Entity.projectiles.BaseBlazeBall;
+import blazecraft.mod.Entity.projectiles.ToxicBall;
 import blazecraft.mod.Entity.Render.BlazeBallRender;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -34,7 +36,14 @@ RenderingRegistry.registerEntityRenderingHandler(ToxicBlaze.class, new IRenderFa
 		RenderingRegistry.registerEntityRenderingHandler(BaseBlazeBall.class, new IRenderFactory<BaseBlazeBall>() {
 			@Override
 			public Render<? super BaseBlazeBall> createRenderFor(RenderManager manager){
-			return new BlazeBallRender(manager, 1F);
+			return new BlazeBallRender(manager, 0.5F);
+			}
+			
+		});
+		RenderingRegistry.registerEntityRenderingHandler(ToxicBall.class, new IRenderFactory<ToxicBall>() {
+			@Override
+			public Render<? super ToxicBall> createRenderFor(RenderManager manager){
+			return new ToxicBallRender(manager, 0.5F);
 			}
 			
 		});
